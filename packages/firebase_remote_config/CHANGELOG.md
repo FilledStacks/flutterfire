@@ -1,3 +1,7 @@
+## 0.4.4
+
+- Fixes bug listed in this [post](https://github.com/FirebaseExtended/flutterfire/issues/4035)
+
 ## 0.4.3
 
  - **FEAT**: bump android `com.android.tools.build` & `'com.google.gms:google-services` versions (#4269).

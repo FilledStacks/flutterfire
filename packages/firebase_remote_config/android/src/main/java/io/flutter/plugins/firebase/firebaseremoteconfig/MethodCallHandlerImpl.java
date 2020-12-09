@@ -42,7 +42,7 @@ class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
           properties.put(
               "lastFetchStatus", mapLastFetchStatus(firebaseRemoteConfigInfo.getLastFetchStatus()));
           properties.put(
-              "inDebugMode", firebaseRemoteConfigInfo.getConfigSettings().isDeveloperModeEnabled());
+              "inDebugMode", false);
           properties.put("parameters", getConfigParameters());
           result.success(properties);
           break;
@@ -52,7 +52,7 @@ class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
           boolean debugMode = call.argument("debugMode");
           final FirebaseRemoteConfig firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
           FirebaseRemoteConfigSettings settings =
-              new FirebaseRemoteConfigSettings.Builder().setDeveloperModeEnabled(debugMode).build();
+              new FirebaseRemoteConfigSettings.Builder().build();
           firebaseRemoteConfig.setConfigSettings(settings);
           result.success(null);
           break;
