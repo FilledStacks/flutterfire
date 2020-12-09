@@ -1,3 +1,7 @@
+## 0.4.4+1
+
+- Changes the `setDefaults` to `setDefaultsAsync`
+
 ## 0.4.4
 
 - Fixes bug listed in this [post](https://github.com/FirebaseExtended/flutterfire/issues/4035)
