@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+// @dart=2.9
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
 import 'package:firebase_auth_platform_interface/src/method_channel/utils/exception.dart';
@@ -13,26 +15,24 @@ void main() {
       AssertionError assertionError = AssertionError();
 
       try {
-        await catchPlatformException(assertionError);
+        throw convertPlatformException(assertionError);
       } on FirebaseAuthException catch (_) {
         fail('should have thrown the original exception');
       } catch (_) {
         return;
       }
-      fail('should have thrown an exception');
     });
 
     test('should catch a [PlatformException] and throw a [FirebaseException]',
         () async {
       PlatformException platformException = PlatformException(code: 'UNKNOWN');
       try {
-        await catchPlatformException(platformException);
+        throw convertPlatformException(platformException);
       } on FirebaseAuthException catch (_) {
         return;
       } catch (_) {
         fail('should have thrown an FirebaseAuthException');
       }
-      fail('should have thrown an exception');
     });
   });
   group('platformExceptionToFirebaseAuthException()', () {
